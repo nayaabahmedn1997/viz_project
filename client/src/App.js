@@ -10,6 +10,8 @@ import DashBoard from './components/Dashboard';
 import Products from './Pages/Products';
 import Customers from './Pages/Customers';
 import Transactions from './Pages/Transactions';
+import Geography from './Pages/Geography';
+
 function App() {
 
   const mode  = useSelector((state)=>state.global.mode);
@@ -38,6 +40,9 @@ function App() {
           />
            <Route path='/transactions' 
           element={<Transactions />}
+          />
+           <Route path='/geography' 
+          element={<Geography />}
           />
         </Route>
     </Routes>
