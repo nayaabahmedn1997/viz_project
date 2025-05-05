@@ -11,6 +11,8 @@ import Products from './Pages/Products';
 import Customers from './Pages/Customers';
 import Transactions from './Pages/Transactions';
 import Geography from './Pages/Geography';
+import Overview from './Pages/Overview';
+
 
 function App() {
 
@@ -43,6 +45,9 @@ function App() {
           />
            <Route path='/geography' 
           element={<Geography />}
+          />
+           <Route path='/overview' 
+          element={<Overview />}
           />
         </Route>
     </Routes>
