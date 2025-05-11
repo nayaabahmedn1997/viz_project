@@ -1,0 +1,35 @@
+{
+  "name": "viz2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install-modules": "npm run install-server && npm run install-client",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "npm run server & npm run client",
+    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
+    "test": "npm test --prefix server && npm test --prefix client",
+    "client-install": "npm install --prefix client",
+    "build": "npm run client-install && npm run build --prefix client && npm run install-server",
+    "start": "node server/index.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nayaabahmedn1997/viz_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nayaabahmedn1997/viz_project/issues"
+  },
+  "homepage": "https://github.com/nayaabahmedn1997/viz_project#readme",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.5.0"
+  }
+}

@@ -4,9 +4,13 @@
 // services/api.js
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+const baseUrl = process.env.NODE_ENV === 'production'
+  ? ''
+  : process.env.REACT_APP_BASE_URL;
+
 export const api = createApi({
   reducerPath: 'UserApi',
-  baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_BASE_URL }),
+  baseQuery: fetchBaseQuery({ baseUrl}),
   tagTypes: ['User', 'Product', 'Customers', 'Transactions', 
     'Geography', 'Sales', 'Admins', 'Performance',"'Dashboard"],
   endpoints: (builder) => ({

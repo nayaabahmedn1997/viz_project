@@ -1,11 +1,13 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import bodyParser from 'body-parser';
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import helmet from 'helmet';
 import morgan from 'morgan';
-
+import path from 'path';
+import { fileURLToPath } from 'url';
 /* ROUTES IMPORT */
 import clientRoutes from "./routes/clientRoutes.js";
 import generalRoutes from "./routes/generalRoutes.js";
@@ -18,13 +20,12 @@ import productStatModel from './models/ProductStat.js';
 import transactionModel from './models/Transaction.js';
 import overallStatModel from './models/overallStat.js';
 import affiliateStatModel from './models/AffiliateStat.js';
-
+;
 
 /* DATA IMPORTS */
 
 
 /* Configuration */
-dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(helmet());
@@ -41,9 +42,16 @@ app.use("/general", generalRoutes);
 app.use("/management", managementRoutes);
 app.use("/sales", salesRoutes);
 
+
+// Recreate __dirname and __filename
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+
 /* MONGOOSE SETUP */
 const PORT  = process.env.PORT || 9000;
 try {
+    console.log(process.env.MONGO_URI)
     mongoose.connect(process.env.MONGO_URI);
    console.log("MongoDB successfully connected");
 //    ONLY ADD DATA ONE TIME
@@ -57,6 +65,13 @@ try {
     console.log(`Error in connecting to database ${error}`);
     process.exit(1);
 }
+// Serve static files from React app
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// Serve React frontend for any other route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
 
 app.listen(PORT, ()=>{
     console.log(`Server running on PORT ${PORT}`);
