@@ -12,6 +12,11 @@ import Customers from './Pages/Customers';
 import Transactions from './Pages/Transactions';
 import Geography from './Pages/Geography';
 import Overview from './Pages/Overview';
+import Daily from './Pages/Daily';
+import Monthly from './Pages/Monthly';
+import Breakdown from './Pages/Breakdown';
+import Admin from './Pages/Admin';
+import Performance from './Pages/Performance';
 
 
 function App() {
@@ -49,6 +54,22 @@ function App() {
            <Route path='/overview' 
           element={<Overview />}
           />
+          <Route path='/daily' 
+          element={<Daily />}
+          />
+           <Route path='/monthly' 
+          element={<Monthly />}
+          />
+          <Route path='/breakdown' 
+          element={<Breakdown />}
+          />
+          <Route path='/admin' 
+          element={<Admin />}
+          />
+          <Route path='/performance' 
+          element={<Performance />}
+          />
+          
         </Route>
     </Routes>
    </ThemeProvider>

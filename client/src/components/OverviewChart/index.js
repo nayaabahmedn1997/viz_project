@@ -49,7 +49,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
 
   return (
     <ResponsiveLine
-        data={view === 'sales'?totalSalesLine: totalUnitsLine}
+        data={view === 'Sales'? totalSalesLine: totalUnitsLine}
         theme={{
             axis: {
               domain: {
@@ -83,7 +83,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
               },
             },
           }}
-        margin={{ top: 50, right: 110, bottom: 50, left: 60 }}
+        margin={{ top: 50, right: 110, bottom: 50, left: 70 }}
         xScale={{ type: 'point' }}
         yScale={{
             type: 'linear',
@@ -113,7 +113,7 @@ const OverviewChart = ({ isDashboard = false, view }) => {
             tickSize: 5,
             tickPadding: 5,
             tickRotation: 0,
-            legend: isDashboard ? "":`Total ${view=== 'sales'?"Revenue":"Units"} for Year`,
+            legend: isDashboard ? "":`Total ${view=== 'Sales'?"Revenue":"Units"} for Year`,
             legendOffset: -60,
             legendPosition: 'middle',
             truncateTickAt: 0
